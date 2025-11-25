@@ -1,0 +1,33 @@
+{
+  "name": "@better/react-file-router",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "test": "vitest",
+    "build": "tsc && rollup -c"
+  },
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.esm.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "@better/source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.cjs.js"
+    },
+    "./vite-plugin": {
+      "types": "./dist/vite-plugin.d.ts",
+      "import": "./dist/vite-plugin.esm.js",
+      "require": "./dist/vite-plugin.cjs.js"
+    }
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-router-dom": "*",
+    "fs": "*",
+    "vite": "*",
+    "path": "*"
+  }
+}

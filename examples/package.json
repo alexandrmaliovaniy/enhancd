@@ -1,0 +1,7 @@
+{
+  "name": "examples",
+  "version": "1.0.0",
+  "scripts": {
+    "dev:react-file-router": "cd react-file-router && npm run dev"
+  }
+}
