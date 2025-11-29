@@ -14,18 +14,18 @@ const generatePageFile = (file: FolderSchema["files"]) => {
             React.createElement(Lazy${file["page"]?.componentName}, null)
         )
     }
-    
+
     `
 }
 
-export const compileLazyPages = (schema: FolderSchema, rootFolder: string): Array<{ path: string, file: string, lazyPath: string, lazyFile: string }> => {
-    const out: Array<{ path: string, file: string, lazyPath: string, lazyFile: string }> = [];
+export const compileLazyPages = (schema: FolderSchema, rootFolder: string): Record<string, { rawFile: string, lazy: boolean }> => {
+    const out: Record<string, { rawFile: string, lazy: boolean }> = {};
     if (schema.files["lazy.page"] && schema.files["page"]) {
         const rawFile = fs.readFileSync(schema.files["page"].path, "utf-8");
-        out.push({ lazyPath: schema.files["lazy.page"].path, lazyFile: rawFile, path: schema.files["page"].path, file: generatePageFile(schema.files) })
+        out[schema.files["lazy.page"].path] = { lazy: true, rawFile };
+        out[schema.files["page"].path] = { lazy: false, rawFile: generatePageFile(schema.files) };
     }
     return schema.subroutes.reduce((acc, el) => {
-        acc.push(...compileLazyPages(el, rootFolder));
-        return acc;
+        return { ...acc, ...compileLazyPages(el, rootFolder) };
     }, out);
 };

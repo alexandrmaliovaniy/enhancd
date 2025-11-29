@@ -90,7 +90,7 @@ export const compileFolderToSchema = (folderPath: string, routerPath = folderPat
         const itemStat = fs.statSync(itemPath);
         if (itemStat.isDirectory() && (itemName.startsWith("@") || itemName.startsWith("$"))) subroutes.push(itemPath);
         if (!itemStat.isFile()) continue;
-        const match = itemName.match(/\.(?<type>lazy.page|page|layout|fallback|404)\./);
+        const match = itemName.match(/\.(?<type>lazy.page|page|error|layout|fallback|404)\./);
         if (!match || !match.groups) continue;
         const type = match.groups.type as keyof FolderSchema["files"];
         const componentName = fileNametoComponentName(itemName);

@@ -11,7 +11,7 @@ const compileImports = (schema: FolderSchema, rootDir: string): string => {
 
     fileTypes.forEach(fileType => {
         const file = schema.files[fileType];
-        if (["404", "lazy.page", "fallback"].includes(fileType) || !file?.importString) return;
+        if (["lazy.page", "fallback"].includes(fileType) || !file?.importString) return;
         out.push(file?.importString);
     })
 
@@ -22,16 +22,19 @@ const compileImports = (schema: FolderSchema, rootDir: string): string => {
 const compileRoutes = (schema: FolderSchema, rootFolder: string): typeof routerSchema => {
     if (!schema.files.page && !schema.files[404] && !schema.files.layout) return [];
     const element = schema.files.page ? `React.createElement(${schema.files.page.componentName}, null)` : "null";
+    const notFoundPage = schema.files[404] ? { path: "*", element: `React.createElement(${schema.files[404].componentName}, null)` } : {};
     if (!schema.files.layout) {
         return [{
             path: schema.files.page?.realtivePath || "",
+            errorElement: schema.files.error ? `React.createElement(${schema.files.error.componentName}, null)` : undefined,
             element,
-        }, ...schema.subroutes.map(subrouteSchema => compileRoutes(subrouteSchema, rootFolder)).flat(1)];
+        }, notFoundPage, ...schema.subroutes.map(subrouteSchema => compileRoutes(subrouteSchema, rootFolder)).flat(1)];
     }
     return [{
         path: schema.files.page?.realtivePath || "",
         element: `React.createElement(${schema.files.layout.componentName}, null)`,
-        children: [{ path: "", element }, ...schema.subroutes.map(subrouteSchema => compileRoutes(subrouteSchema, rootFolder)).flat(1)]
+        errorElement: schema.files.error ? `React.createElement(${schema.files.error.componentName}, null)` : undefined,
+        children: [{ path: "", element }, notFoundPage, ...schema.subroutes.map(subrouteSchema => compileRoutes(subrouteSchema, rootFolder)).flat(1)]
     }]
 }
 const compilePathInjects = (schema: FolderSchema, rootFolder: string): string => {
