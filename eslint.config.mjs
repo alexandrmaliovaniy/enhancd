@@ -39,7 +39,10 @@ export const createConfig = (tsconfigRootDir = __dirname) => defineConfig([
     rules: {
       "quotes": ["error", "double"],
       "@typescript-eslint/no-unused-vars": "warn",
-      "react/react-in-jsx-scope": "off"
+      "react/react-in-jsx-scope": "off",
+      "@typescript-eslint/no-empty-object-type": "off",
+      "@typescript-eslint/no-unused-vars": "warn",
+      "@typescript-eslint/no-explicit-any": "warn"
     }
   }
 ]);

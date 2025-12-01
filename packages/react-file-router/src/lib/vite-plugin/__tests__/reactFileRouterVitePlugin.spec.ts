@@ -6,7 +6,7 @@ describe("Vite plugin", () => {
 
     const routerPluginObj = reactFileRouterVitePlugin();
 
-    expect(routerPluginObj.name).toEqual("better-react-file-router");
+    expect(routerPluginObj.name).toEqual("enhancd-react-file-router");
     expect(routerPluginObj.enforce).toEqual("pre");
     expect(typeof routerPluginObj.configResolved).toBe("function");
     expect(typeof routerPluginObj.resolveId).toBe("function");

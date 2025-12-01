@@ -1,10 +1,10 @@
-# @better/react-file-router
+# @enhancd/react-file-router
 
 ### Implements file-based routing for vite react apps using react-router-dom V6
 
 # Instaling
 
-TODO
+npm i @enhancd/react-file-router
 
 # Getting started
 
@@ -12,7 +12,7 @@ TODO
 
 ```typescript
 // vite.config.ts
-import { reactFileRouterVitePlugin } from "@better/react-file-router/vite-plugin";
+import { reactFileRouterVitePlugin } from "@enhancd/react-file-router/vite-plugin";
 
 export default defineConfig({
   plugins: [react(), reactFileRouterVitePlugin()],
@@ -25,7 +25,7 @@ export default defineConfig({
 import { StrictMode } from "react";
 import * as ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { routerSchema } from "@better/react-file-router";
+import { routerSchema } from "@enhancd/react-file-router";
 
 
 const root = ReactDOM.createRoot(
@@ -50,6 +50,7 @@ Inside `$router` directory create your router structure with following conventio
   * layout - component that wraps all childr routes, and displays via react-router `Outlet`
 * Router component filenames follows convention: `Name.type.tsx`, ex: `Index.page.tsx`, `Index.layout.tsx`, `Home.lazy.page.tsx`
 * Component exported function names follows default react naming convention, ex: `Index.page.tsx` export `IndexPage`
+* Component names should be unique.
 
 See [examle](../../examples/react-file-router/src/$router/) router structure
 
@@ -58,7 +59,7 @@ See [examle](../../examples/react-file-router/src/$router/) router structure
 
 ```typescript
 // Index.page.tsx
-import { path } from "@better/react-file-router";
+import { path } from "@enhancd/react-file-router";
 import { NavLink } from "react-router-dom";
 import { HomeLazyPage, ProductPage } from "@router";
 

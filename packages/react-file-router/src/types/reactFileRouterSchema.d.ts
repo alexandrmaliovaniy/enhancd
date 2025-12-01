@@ -10,5 +10,5 @@ declare module "virtual:react-file-router-schema" {
 }
 
 declare const window: {
-    __BETTER_REACT_FILE_ROUTER__?: Map<object, string>;
+    __ENHANCD_REACT_FILE_ROUTER__?: Map<object, string>;
 }

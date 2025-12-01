@@ -1,9 +1,12 @@
 {
-  "name": "better",
+  "name": "enhancd",
   "version": "1.0.0",
-  "description": "Better solutions for better web development experience",
+  "description": "Enhanced solutions for better web development experience",
   "main": "index.js",
   "type": "module",
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  },
   "workspaces": [
     "packages/*",
     "apps/*",
@@ -13,9 +16,12 @@
     "prepare": "husky",
     "lint": "eslint . --fix",
     "lint:fix": "npx eslint . --fix",
-    "react-file-router:test": "npm run test --workspace=@better/react-file-router",
-    "react-file-router:build": "npm run build --workspace=@better/react-file-router",
-    "examples:react-file-router": "npm run dev:react-file-router --workspace=examples"
+    "react-file-router:test": "npm run test --workspace=@enhancd/react-file-router",
+    "react-file-router:build": "npm run build --workspace=@enhancd/react-file-router",
+    "disclosure:test": "npm run test --workspace=@enhancd/disclosure",
+    "disclosure:build": "npm run build --workspace=@enhancd/disclosure",
+    "examples:react-file-router": "npm run dev:react-file-router --workspace=examples",
+    "examples:disclosure": "npm run dev:disclosure --workspace=examples"
   },
   "author": "",
   "license": "ISC",

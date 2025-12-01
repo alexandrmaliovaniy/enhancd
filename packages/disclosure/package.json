@@ -1,5 +1,5 @@
 {
-  "name": "@enhancd/react-file-router",
+  "name": "@enhancd/disclosure",
   "version": "1.0.0",
   "type": "module",
   "scripts": {
@@ -23,10 +23,6 @@
     }
   },
   "peerDependencies": {
-    "react": "*",
-    "react-router-dom": "*",
-    "fs": "*",
-    "vite": "*",
-    "path": "*"
+    "react": "*"
   }
 }

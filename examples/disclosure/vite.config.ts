@@ -1,15 +1,16 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import { reactFileRouterVitePlugin } from "@enhancd/react-file-router/vite-plugin";
 import tailwindcss from "@tailwindcss/vite"
 import * as path from "path";
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), reactFileRouterVitePlugin(), tailwindcss()],
+  plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
-      "@router": path.resolve(__dirname, "./src/$router")
+      "@lib": path.resolve(__dirname, "./src/lib"),
+      "@widgets": path.resolve(__dirname, "./src/widgets"),
+      "@api": path.resolve(__dirname, "./src/api"),
     }
   }
 })

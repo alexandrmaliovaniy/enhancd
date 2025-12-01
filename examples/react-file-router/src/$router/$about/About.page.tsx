@@ -1,4 +1,4 @@
-import { path } from "@better/react-file-router"
+import { path } from "@enhancd/react-file-router"
 import { NavLink } from "react-router-dom"
 import { IndexPage } from "@router"
 

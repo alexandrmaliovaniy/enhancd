@@ -1,8 +1,8 @@
 import { StrictMode } from "react";
 import * as ReactDOM from "react-dom/client";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { routerSchema } from "@enhancd/react-file-router";
 import "./main.css";
+import { DialogProvider } from "@api";
+import { App } from "./App";
 
 
 const root = ReactDOM.createRoot(
@@ -11,6 +11,8 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <StrictMode>
-    <RouterProvider router={createBrowserRouter(routerSchema)} />
+    <DialogProvider>
+      <App />
+    </DialogProvider>
   </StrictMode>
 );

@@ -1,6 +1,7 @@
-import { path } from "@better/react-file-router";
+import { path } from "@enhancd/react-file-router";
 import { NavLink } from "react-router-dom";
-import { ProductLazyPage, IndexPage } from "@router";
+import { IndexPage } from "@router";
+import {ProductLazyPage} from "./@productId/Product.lazy.page";
 
 export const ProductsPage = () => {
     return (

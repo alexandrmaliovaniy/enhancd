@@ -2,6 +2,7 @@
   "name": "examples",
   "version": "1.0.0",
   "scripts": {
-    "dev:react-file-router": "cd react-file-router && npm run dev"
+    "dev:react-file-router": "cd react-file-router && npm run dev",
+    "dev:disclosure": "cd disclosure && npm run dev"
   }
 }

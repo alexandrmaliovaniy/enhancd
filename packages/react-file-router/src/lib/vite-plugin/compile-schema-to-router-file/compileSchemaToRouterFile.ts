@@ -40,7 +40,7 @@ const compileRoutes = (schema: FolderSchema, rootFolder: string): typeof routerS
 const compilePathInjects = (schema: FolderSchema, rootFolder: string): string => {
     const out = [];
 
-    if (schema.files.page) out.push(`window.__BETTER_REACT_FILE_ROUTER__.set(${schema.files.page.componentName}, "${schema.files.page.realtivePath}");`);
+    if (schema.files.page) out.push(`window.__ENHANCD_REACT_FILE_ROUTER__.set(${schema.files.page.componentName}, "${schema.files.page.realtivePath}");`);
 
     return [...out, ...schema.subroutes.map(subroutSchema => compilePathInjects(subroutSchema, rootFolder))].join("\n").replace(/^\n/gm, "");
 }
@@ -56,7 +56,7 @@ ${imports}
 
 export default ${routes}
 
-window.__BETTER_REACT_FILE_ROUTER__ = new Map();
+window.__ENHANCD_REACT_FILE_ROUTER__ = new Map();
 ${compilePathInjects(schema, rootFolder)}`;
 
 }

@@ -1,13 +1,13 @@
-# Better
+# Enhancd
 
-### Better solutions for better web development experience
+### Enhanced solutions for better web development experience
 
 ## Packages
 
-* [@better/react-file-router](./packages/react-file-router/README.md)
-* @better/dialog - TODO
+* [@enhancd/react-file-router](./packages/react-file-router/README.md)
+* [@enhancd/disclosure](./packages/disclosure/README.md)
 
 ## Apps
 
-* @better/i18n-manager - TODO
+* @enhancd/i18n-manager - TODO
 

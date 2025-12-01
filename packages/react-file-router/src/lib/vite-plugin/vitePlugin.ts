@@ -11,7 +11,7 @@ export function reactFileRouterVitePlugin(params?: { rootDir?: string, routerDir
     let lazyPagesMap: Record<string, { rawFile: string, lazy: boolean }>;
     let config: ResolvedConfig;
     return {
-      name: "better-react-file-router",
+      name: "enhancd-react-file-router",
       enforce: "pre" as const,
       async configResolved(cfg) {
         config = cfg;
@@ -25,19 +25,23 @@ export function reactFileRouterVitePlugin(params?: { rootDir?: string, routerDir
       },
       resolveId(id: string) {
         if (id.startsWith("virtual:react-file-router-schema")) return "\0" + id;
-        if (lazyPagesMap[id]) return "\0" + id;
+        if (lazyPagesMap[id] && lazyPagesMap[id].lazy) return "\0" + id;
       },
       load(id: string) {
         if (id.includes("virtual:react-file-router-schema")) return routerFile;
         const pagePath = id.replace("\0", "");
         const page = lazyPagesMap[pagePath];
+        console.log(id);
+
+
+
         if (page && page.lazy) return transform(page.rawFile, {
                 presets: [["react", {
                     pragma: "React.createElement",
                     pragmaFrag: "React.Fragment"
                 }],
                 "typescript"],
-                filename: pagePath,
+                filename: id,
                 plugins: [["transform-react-jsx", { runtime: "automatic" }]]
             }).code;
         if (page && !page.lazy) return page.rawFile;
