@@ -31,10 +31,6 @@ export function reactFileRouterVitePlugin(params?: { rootDir?: string, routerDir
         if (id.includes("virtual:react-file-router-schema")) return routerFile;
         const pagePath = id.replace("\0", "");
         const page = lazyPagesMap[pagePath];
-        console.log(id);
-
-
-
         if (page && page.lazy) return transform(page.rawFile, {
                 presets: [["react", {
                     pragma: "React.createElement",

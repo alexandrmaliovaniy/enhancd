@@ -10,7 +10,7 @@ const generatePageFile = (file: FolderSchema["files"]) => {
     ${file["page"]?.export === "default" ? "export default" : "export"} const ${file.page?.componentName} = () => {
         return React.createElement(
             React.Suspense,
-            { fallback: React.createElement(${file["fallback"] ? "ProductFallback" : "() => null"}, null) },
+            { fallback: React.createElement(${file["fallback"] ? file["fallback"].componentName : "() => null"}, null) },
             React.createElement(Lazy${file["page"]?.componentName}, null)
         )
     }
