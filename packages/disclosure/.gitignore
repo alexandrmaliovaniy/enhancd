@@ -1,3 +1,4 @@
 .rollup.cache
 tsconfig.tsbuildinfo
 out-tsc
+.npmrc
