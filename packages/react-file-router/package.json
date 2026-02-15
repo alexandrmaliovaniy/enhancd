@@ -1,7 +1,7 @@
 {
   "name": "@enhancd/react-file-router",
   "description": "File-based routing for Vite + React apps using react-router-dom V6. Automatically generates routes from a directory structure — no manual RouteObject configuration needed.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "author": "Alexandr Maliovaniy <alexandrmaliovaniy@gmail.com>",
   "license": "MIT",
@@ -14,6 +14,7 @@
     "test": "vitest",
     "build": "tsc && rollup -c"
   },
+  "files": ["dist"],
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.esm.js",
   "types": "./dist/index.d.ts",
