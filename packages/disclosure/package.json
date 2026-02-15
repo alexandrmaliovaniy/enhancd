@@ -1,7 +1,15 @@
 {
   "name": "@enhancd/disclosure",
+  "description": "Promise-based modal/dialog/popup state management for React. Wraps any dialog UI component and lets you `await` user interactions instead of managing open/close state manually.",
   "version": "1.0.0",
   "type": "module",
+  "author": "Alexandr Maliovaniy <alexandrmaliovaniy@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alexandrmaliovaniy/enhancd/blob/master/packages/disclosure/README.md"
+  },
+  "homepage": "https://github.com/alexandrmaliovaniy/enhancd/blob/master/packages/disclosure/README.md",
   "scripts": {
     "test": "vitest",
     "build": "tsc && rollup -c"
