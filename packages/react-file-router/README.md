@@ -35,14 +35,29 @@ export default defineConfig({
 });
 ```
 
-### 2. Set up the router provider
+### 2. Set up TypeScript types
+
+`virtual:react-file-router-schema` is a Vite virtual module. TypeScript needs an ambient declaration so it can type-check imports from it. Create `src/vite-env.d.ts` (or add to an existing one):
+
+```typescript
+// src/vite-env.d.ts
+/// <reference types="vite/client" />
+
+declare module "virtual:react-file-router-schema" {
+  import type { RouteObject } from "react-router-dom";
+  const schema: RouteObject[];
+  export default schema;
+}
+```
+
+### 3. Set up the router provider
 
 ```typescript
 // src/main.tsx
 import { StrictMode } from "react";
 import * as ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { routerSchema } from "@enhancd/react-file-router";
+import routerSchema from "virtual:react-file-router-schema";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <StrictMode>
@@ -51,7 +66,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
 );
 ```
 
-### 3. Create the `$router` directory
+### 4. Create the `$router` directory
 
 Create `src/$router/` and add route files following the naming conventions below.
 
@@ -327,4 +342,4 @@ At startup (and on file changes in dev mode) the Vite plugin:
 3. For `.lazy.page.tsx` files, generates a wrapper module that uses `React.lazy` + `React.Suspense` so the actual page code is split into a separate chunk.
 4. Hot-reloads automatically when route files are added, removed, or renamed.
 
-The `routerSchema` import you pass to `createBrowserRouter()` resolves to this virtual module at build/dev time — no generated files are written to disk.
+The `routerSchema` default export you import from `virtual:react-file-router-schema` and pass to `createBrowserRouter()` resolves to this virtual module at build/dev time — no generated files are written to disk.

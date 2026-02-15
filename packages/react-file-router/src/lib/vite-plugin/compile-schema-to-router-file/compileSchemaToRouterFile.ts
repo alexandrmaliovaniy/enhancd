@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import * as path from "path";
 import { FolderSchema } from "../compile-folder-to-schema/compileFolderToSchema";
-import { routerSchema } from "src/lib/reactFileRouter";
+import { RouteObject } from "react-router-dom";
 
 
 const compileImports = (schema: FolderSchema, rootDir: string): string => {
@@ -19,7 +19,7 @@ const compileImports = (schema: FolderSchema, rootDir: string): string => {
 }
 
 
-const compileRoutes = (schema: FolderSchema, rootFolder: string): typeof routerSchema => {
+const compileRoutes = (schema: FolderSchema, rootFolder: string): RouteObject[] => {
     if (!schema.files.page && !schema.files[404] && !schema.files.layout) return [];
 
     const element = schema.files.page ? schema.files.page.realtivePath.search(":") > 0 ? `React.createElement(() => React.createElement(${schema.files.page.id}, useParams()), null)` : `React.createElement(${schema.files.page.id}, null)` : "null";

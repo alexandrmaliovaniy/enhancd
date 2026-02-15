@@ -1,7 +1,7 @@
 import { StrictMode } from "react";
 import * as ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { routerSchema } from "@enhancd/react-file-router";
+import routerSchema from "virtual:react-file-router-schema";
 import "./main.css";
 
 
